@@ -39,20 +39,15 @@ public class UserController {
     }
 
 
-
     /**
      * 根据id查询User实体
+     *
      * @param id
      * @return
      */
     @RequestMapping("/{id}")
-    public User getUserById(@PathVariable Integer id){
-        User user=null;
-        try {
-            user=userRepository.getUserById(id);
-        }catch (Exception e){
-        }
-        return user;
+    public User getUserById(@PathVariable Integer id) {
+        return userRepository.getUserById(id);
     }
 
 

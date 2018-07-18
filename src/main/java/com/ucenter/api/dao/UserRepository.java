@@ -45,7 +45,7 @@ public class UserRepository {
      * @throws Exception
      */
     @Transactional(readOnly = true)
-    public User getUserById(Integer id) throws Exception {
+    public User getUserById(Integer id){
         //queryForObject:找不到会报异常  query:找不到则Null
         //User user=jdbcTemplate.queryForObject("select id,name,email from users where id=?",new Object[]{id},new UserRowMapper());
         List<User> userList = jdbcTemplate.query("select id,name,email from users where id=?", new Object[]{id}, new UserRowMapper());
