@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,6 +37,24 @@ public class UserController {
     public List<User> listUser() {
         return userRepository.getUserList();
     }
+
+
+
+    /**
+     * 根据id查询User实体
+     * @param id
+     * @return
+     */
+    @RequestMapping("/{id}")
+    public User getUserById(@PathVariable Integer id){
+        User user=null;
+        try {
+            user=userRepository.getUserById(id);
+        }catch (Exception e){
+        }
+        return user;
+    }
+
 
 }                                                     
                                                             
