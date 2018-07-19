@@ -62,8 +62,10 @@ public class UserController {
      */
     @RequestMapping("/redis/{id}")
     public String getRedisUserById(@PathVariable Integer id) {
-        userStorage.setUser(String.valueOf(id));
-        return userStorage.getUser(String.valueOf(id));
+        if (userStorage.setUser(String.valueOf(id))) {
+            return userStorage.getUser(String.valueOf(id));
+        }
+        return "";
     }
 
 
