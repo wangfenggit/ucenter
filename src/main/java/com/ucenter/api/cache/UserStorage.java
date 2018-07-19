@@ -1,5 +1,6 @@
 package com.ucenter.api.cache;
 
+import com.alibaba.druid.util.StringUtils;
 import com.ucenter.api.cache.keys.UserKeyRepertory;
 import com.ucenter.api.redis.RedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,13 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserStorage {
-    
+
     @Autowired
     private RedisClient redisClient;
 
     public boolean setUser(String userId) {
         String result = redisClient.set(UserKeyRepertory.USER_KEY + userId, userId);
-        if ("OK".equals(result)) {
+        if (!StringUtils.isEmpty(result) && "OK".equals(result)) {
             return true;
         }
         return false;
