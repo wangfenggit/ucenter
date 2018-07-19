@@ -1,5 +1,6 @@
 package com.ucenter.api.controller;
 
+import com.ucenter.api.cache.UserStorage;
 import com.ucenter.api.config.ConfigBean;
 import com.ucenter.api.dao.UserRepository;
 import com.ucenter.api.entity.User;
@@ -28,6 +29,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserStorage userStorage;
+
     /**
      * 用户列表
      *
@@ -48,6 +52,18 @@ public class UserController {
     @RequestMapping("/{id}")
     public User getUserById(@PathVariable Integer id) {
         return userRepository.getUserById(id);
+    }
+
+    /**
+     * 根据id查询User实体
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/{id}")
+    public String getUser(@PathVariable Integer id) {
+        userStorage.setUser(String.valueOf(id));
+        return userStorage.getUser(String.valueOf(id));
     }
 
 
