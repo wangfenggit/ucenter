@@ -13,7 +13,7 @@ import java.util.Set;
 
 
 @Configuration
-@PropertySource({"classpath:application-redis.properties"})
+//@PropertySource({"classpath:application-redis.properties"})
 public class RedisConfig {
 
     @Value("${redis.config.maxTotal}")
