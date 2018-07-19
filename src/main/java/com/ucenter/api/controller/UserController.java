@@ -60,8 +60,8 @@ public class UserController {
      * @param id
      * @return
      */
-    @RequestMapping("/{id}")
-    public String getUser(@PathVariable Integer id) {
+    @RequestMapping("/redis/{id}")
+    public String getRedisUserById(@PathVariable Integer id) {
         userStorage.setUser(String.valueOf(id));
         return userStorage.getUser(String.valueOf(id));
     }
