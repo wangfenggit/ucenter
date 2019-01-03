@@ -36,7 +36,7 @@ public class UserController {
      * 用户列表
      *
      * @return
-     */
+     */                                                                             
     @RequestMapping("/list")
     public List<User> listUser() {
         return userRepository.getUserList();
